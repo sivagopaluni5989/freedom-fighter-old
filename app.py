@@ -5,7 +5,7 @@ app = Flask(__name__)
 # Hindu National Heroes Data
 heroes = [
     {
-        "name": "Chandra Shekhar Azad",
+        "name": "Chandra Shekar Azad",
         "image": "Azad.jpg",
         "description": "Aggressive fighter  of the Indian independence movement through Unconditional-violence."
     },
@@ -15,10 +15,11 @@ heroes = [
         "description": "Young revolutionary who became a symbol of heroism in the Indian freedom struggle."
     },
     {
-        "name": "Sardar Vallabhbhai Patel",
+        "name": "S Vallabhbhai Patel",
         "image": "patel.jpg",
         "description": "The Iron Man of India who united the princely states into a single nation."
     },
+
         ]
 
 
