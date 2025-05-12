@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hindu National Heroes (Verulu)</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f8ff; padding: 20px; }
+        h1 { text-align: center; color: darkblue; }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .hero-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 250px;
+            padding: 15px;
+            background-color: white;
+            text-align: center;
+            box-shadow: 2px 2px 10px #ccc;
+        }
+        .hero-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hindu National Heroes</h1>
+    <div class="hero-grid">
+        {% for hero in heroes %}
+        <div class="hero-card">
+            <img src="{{ url_for('static', filename='images/' + hero.image) }}" alt="{{ hero.name }}">
+            <h3>{{ hero.name }}</h3>
+            <p>{{ hero.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
