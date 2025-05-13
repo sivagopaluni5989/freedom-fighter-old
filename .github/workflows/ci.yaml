@@ -3,7 +3,7 @@ name: Python application
 on:
   push:
     branches: 
-      - "main"
+      - "master"
     paths-ignore:
         - 'my-python/**'
         - 'README.md' 
@@ -72,8 +72,8 @@ jobs:
         sed -i "s|image:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/sample-nodejs:${{github.run_id}}|g" deployment.yaml
     - name: Commit and push changes
       run: |
-        git config --global user.email "lokeshbabu.nalluri1111@gmail.com"
-        git config --global user.name "lokesh"
+        git config --global user.email "sivagopaluni5989@gmail.com"
+        git config --global user.name "sivagopaluni5989"
         git add my-python/values.yaml
         git commit -m "Update tag in Helm chart"
         git push
