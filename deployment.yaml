@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: freedom-fighters
-        image: shivagopaluni/freedom-fighters:latest
+        image: shivagopaluni/my-python:14994667199
         ports:
         - containerPort: 5000
 ---
