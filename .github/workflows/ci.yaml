@@ -3,7 +3,7 @@ name: Python application
 on:
   push:
     branches: 
-      - "master"
+      - "main"
     paths-ignore:
         - 'my-python/**'
         - 'README.md' 
@@ -15,7 +15,7 @@ permissions:
 jobs:
   build:
 
-    runs-on:  ubuntu-latest
+    runs-on:  self-hosted  #ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
 
  
   push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted #ubuntu-latest
 
     needs: build
 
@@ -55,4 +55,26 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-python:${{github.run_id}}
+
+  update-newtag-in-helm-chart:
+    runs-on: self-hosted #ubuntu-latest
+
+    needs: push
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.TOKEN }}
+
+    - name: Update tag in Helm chart
+      run: |
+        sed -i "s|image:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/sample-nodejs:${{github.run_id}}|g" deployment.yaml
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "lokeshbabu.nalluri1111@gmail.com"
+        git config --global user.name "lokesh"
+        git add my-python/values.yaml
+        git commit -m "Update tag in Helm chart"
+        git push
 
