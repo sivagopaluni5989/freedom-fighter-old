@@ -5,7 +5,7 @@ on:
     branches: 
       - "master"
     paths-ignore:
-        - 'my-python/**'
+        - 'deployment.yaml'
         - 'README.md' 
 
 
